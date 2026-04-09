@@ -109,7 +109,7 @@ const Dashboard: React.FC = () => {
   }, [roomId, password, navigate]);
 
   const connectWebSocket = (currentUserId: string) => {
-    const wsUrl = (import.meta.env.VITE_BACKEND_URL || 'http://localhost:3001').replace('http', 'ws');
+    const wsUrl = (import.meta.env.VITE_WS_URL || 'http://localhost:3001').replace('http', 'ws');
     const ws = new WebSocket(wsUrl);
     wsRef.current = ws;
 

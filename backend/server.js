@@ -21,19 +21,24 @@ app.use(cors({
   origin: function (origin, callback) {
     if (!origin) return callback(null, true);
 
+    // allow localhost
     if (origin.includes("localhost")) {
       return callback(null, true);
     }
 
+    // allow production frontend
     if (allowedOrigins.includes(origin)) {
       return callback(null, true);
     }
 
     console.log("Blocked by CORS:", origin);
-    callback(new Error("Not allowed by CORS"));
+    return callback(null, false); // ❗ IMPORTANT change
   },
+  methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true
 }));
+
+app.options("*", cors()); //  handle preflight
 
 
 app.use(express.json({ limit: '100mb' }));
