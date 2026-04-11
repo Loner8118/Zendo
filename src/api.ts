@@ -55,7 +55,7 @@ class RoomAPI {
     roomId: string,
     data: SendMessageRequest
   ): Promise<{ success: boolean; message: Message }> {
-    const response = await fetch(`${this.baseUrl}/api/rooms/${roomId}/message`, {
+    const response = await fetch(`${this.baseUrl}/rooms/${roomId}/message`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -74,7 +74,7 @@ class RoomAPI {
     roomId: string,
     data: SendFileRequest
   ): Promise<{ success: boolean; fileId: string; message: Message }> {
-    const response = await fetch(`${this.baseUrl}/api/rooms/${roomId}/file`, {
+    const response = await fetch(`${this.baseUrl}/rooms/${roomId}/file`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -94,7 +94,7 @@ class RoomAPI {
     password: string
   ): Promise<{ messages: Message[]; participantCount: number }> {
     const response = await fetch(
-      `${this.baseUrl}/api/rooms/${roomId}/messages?password=${encodeURIComponent(password)}`
+      `${this.baseUrl}/rooms/${roomId}/messages?password=${encodeURIComponent(password)}`
     );
 
     if (!response.ok) {
@@ -110,7 +110,7 @@ class RoomAPI {
     password: string
   ): Promise<any> {
     const response = await fetch(
-      `${this.baseUrl}/api/rooms/${roomId}/file/${fileId}?password=${encodeURIComponent(password)}`
+      `${this.baseUrl}/rooms/${roomId}/file/${fileId}?password=${encodeURIComponent(password)}`
     );
 
     if (!response.ok) {
@@ -122,7 +122,7 @@ class RoomAPI {
 
   async deleteRoom(roomId: string, password: string): Promise<{ success: boolean }> {
     const response = await fetch(
-      `${this.baseUrl}/api/rooms/${roomId}?password=${encodeURIComponent(password)}`,
+      `${this.baseUrl}/rooms/${roomId}?password=${encodeURIComponent(password)}`,
       {
         method: 'DELETE',
       }
