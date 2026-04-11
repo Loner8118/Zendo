@@ -35,7 +35,7 @@ class RoomAPI {
   }
 
   async joinRoom(data: JoinRoomRequest): Promise<JoinRoomResponse> {
-    const response = await fetch(`${this.baseUrl}/api/rooms/join`, {
+    const response = await fetch(`${this.baseUrl}/rooms/join`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
