@@ -19,7 +19,7 @@ class RoomAPI {
   }
 
   async createRoom(data: { password: string }): Promise<CreateRoomResponse> {
-    const response = await fetch(`${this.baseUrl}/api/rooms/create`, {
+    const response = await fetch(`${this.baseUrl}/rooms/create`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
