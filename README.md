@@ -1,1 +1,2 @@
-Zendo - https://app.netlify.com/projects/zendoshare/overview
+Zendo - https://zendoshare.netlify.app/
+
